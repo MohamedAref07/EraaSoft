@@ -202,6 +202,3 @@ console.log(sayHello("Mohamed"));
 console.log(`==============================`);
 
 //Thank You
-
-
-console.log(Math.min(5, 2, 7, -1));
