@@ -1,3 +1,5 @@
+<!-- @format -->
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -49,11 +51,41 @@
         </div>
       </div>
     </header>
-    <section class="product_detail my-5">
-      <div class="container">
-        <div class="product_detail_card">
-            
+    <section class="product_detail my-5 py-5">
+      <div class="container d-flex justify-content-center align-items-center">
+        <!-- TTT -->
+        <div
+          class="product_detail_card d-flex justify-content-start align-items-start"
+        >
+          <div class="image">
+            <img id="product_image" src="" alt="" />
+          </div>
+          <div class="descripton ps-4">
+            <h2 class="mb-5" id="product_description">${data.description}</h2>
+            <div class="rate mb-4">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <span class="Price" id="product_price"
+              >Price: ${data.description}</span
+            >
+            <div class="counter my-5">
+              <span class="plus"><i class="fa fa-plus"></i></span>
+              <input type="number" value="1" min="0" style="width: 40px" />
+              <span class="minus"><i class="fa fa-minus"></i></span>
+            </div>
+            <div
+              class="buttons d-flex flex-column justify-content-center align-items-start"
+            >
+              <span><a href="#">Add To Wishlist</a></span>
+              <span><a href="#">Add To Cart</a></span>
+            </div>
+          </div>
         </div>
+        <!-- TTT -->
       </div>
     </section>
     <footer class="footer">
@@ -84,6 +116,7 @@
       referrerpolicy="no-referrer"
     ></script>
     <script src="assets/scripts/bootstrap.bundle.min.js"></script>
+    <script src="assets/scripts/product.js"></script>
     <script src="assets/scripts/main.js"></script>
   </body>
 </html>

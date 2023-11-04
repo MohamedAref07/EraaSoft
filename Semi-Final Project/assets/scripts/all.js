@@ -1,12 +1,13 @@
 /** @format */
-
-async function allProducts() {
+let allProductsDisplay = [];
+async function showAllProducts() {
   let res = await fetch(`http://localhost:3000/product`);
   let finalRes = await res.json();
   console.log(finalRes);
   displayProducts(finalRes);
+  allProductsDisplay.push(...finalRes);
 }
-allProducts();
+showAllProducts();
 
 function displayProducts(data) {
   let temp = ``;
@@ -27,7 +28,7 @@ function displayProducts(data) {
               ><i class="fa-solid fa-cart-shopping"></i
             ></span>
           </div>
-          <button class="btn btn-dark view">View Product</button>
+          <button id=${data.id} class="btn btn-dark view">View Product</button>
         </div>
         <div class="product_details">
           <p>${data.description}</p>
@@ -37,4 +38,25 @@ function displayProducts(data) {
       `)
   );
   document.querySelector(".products").innerHTML = temp;
+}
+function makeProductWorks() {
+  let viewBtns = document.querySelectorAll("button.view");
+  viewBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      let productId = btn.getAttribute("id").replace("product_", "");
+      console.log(productId);
+      let productDetails = allProductsDisplay.find((p) => p.id == productId);
+      saveDataToLocalStorage("productDetails", productDetails);
+      location.assign("product.html");
+    });
+  });
+}
+async function loadAllProducts() {
+  await showAllProducts();
+  makeProductWorks();
+}
+
+loadAllProducts();
+function saveDataToLocalStorage(type, data) {
+  localStorage.setItem(`${type}`, `${JSON.stringify(data)}`);
 }

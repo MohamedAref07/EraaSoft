@@ -31,13 +31,14 @@ const swiper_product = new Swiper(".swiper_product", {
   loop: true,
 });
 // ============================================================================
-
+let allProducts = [];
 async function womenProducts(endPoint) {
   let res = await fetch(`http://localhost:3000/product?for=${endPoint}`);
   let finalRes = await res.json();
+  allProducts.push(...finalRes);
   displaywomenProducts(finalRes);
 }
-womenProducts("women");
+// womenProducts("women");
 
 function displaywomenProducts(data) {
   let temp = ``;
@@ -58,7 +59,7 @@ function displaywomenProducts(data) {
                       ><i class="fa-solid fa-cart-shopping"></i
                     ></span>
                   </div>
-                  <button class="btn btn-dark view">View Product</button>
+                  <button id='product_${data.id}' class="btn btn-dark view">View Product</button>
                 </div>
               </div>
   `)
@@ -70,11 +71,12 @@ function displaywomenProducts(data) {
 async function manProducts(endPoint) {
   let res = await fetch(`http://localhost:3000/product?for=${endPoint}`);
   let finalRes = await res.json();
+  allProducts.push(...finalRes);
   displaymanProducts(finalRes);
 }
-manProducts("man");
+// manProducts("man");
 
-function displaymanProducts(data) {
+async function displaymanProducts(data) {
   let temp = ``;
   data.forEach(
     (data) =>
@@ -93,7 +95,7 @@ function displaymanProducts(data) {
                       ><i class="fa-solid fa-cart-shopping"></i
                     ></span>
                   </div>
-                  <button class="btn btn-dark view">View Product</button>
+                  <button id=${data.id} class="btn btn-dark view">View Product</button>
                 </div>
               </div>
   `)
@@ -102,4 +104,27 @@ function displaymanProducts(data) {
 }
 // ======================================================================================
 
+function makeProductWorks() {
+  let viewBtns = document.querySelectorAll("button.view");
+  viewBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      let productId = btn.getAttribute("id").replace("product_", "");
+      console.log(productId);
+      let productDetails = allProducts.find((p) => p.id == productId);
+      saveDataToLocalStorage("productDetails", productDetails);
+      location.assign("product.html");
+    });
+  });
+}
 
+function saveDataToLocalStorage(type, data) {
+  localStorage.setItem(`${type}`, `${JSON.stringify(data)}`);
+}
+
+async function loadAllProducts() {
+  await womenProducts("women");
+  await manProducts("man");
+  makeProductWorks();
+}
+
+loadAllProducts();

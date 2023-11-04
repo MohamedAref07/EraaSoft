@@ -411,7 +411,7 @@ li {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
   top: 10px;
   right: -30px;
   z-index: 1;
@@ -703,5 +703,93 @@ li {
 @media (max-width: 991px) {
   .products .product_card {
     width: calc(100% / 2 - 2rem);
+  }
+}
+/* ======================================================================= */
+
+.product_detail .product_detail_card {
+  width: 80%;
+  margin: auto;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
+  padding: 70px;
+  font-size: 30px;
+}
+.product_detail .product_detail_card .image {
+  flex-basis: 50%;
+}
+.product_detail .product_detail_card .image img {
+  width: 100%;
+}
+.product_detail .product_detail_card .descripton {
+  padding: 20px;
+  flex-basis: 50%;
+  text-align: center;
+}
+.product_detail_card .buttons span {
+  width: 80%;
+  background-color: var(--main-color);
+  color: var(--sec-color);
+  padding: 0.5rem 1rem;
+  margin: auto;
+  margin-bottom: 40px;
+  cursor: pointer;
+  transition: var(--transition);
+  border: none;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  /* display: none; <- Crashes Chrome on hover */
+  -webkit-appearance: none;
+  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+.product_detail_card .buttons span a {
+  color: var(--sec-color);
+  transition: var(--transition);
+}
+.product_detail_card .buttons span:hover {
+  background-color: var(--sec-color);
+  border: 1px soild var(--main-color);
+}
+.product_detail_card .buttons span:hover a {
+  color: var(--main-color);
+}
+.counter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.counter .plus,
+.counter .minus {
+  width: 30px;
+  height: 30px;
+  background-color: var(--main-color);
+  color: var(--sec-color);
+  border-radius: 5px;
+  padding: 20px;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.counter input {
+  text-align: center;
+}
+
+@media (max-width: 991px) {
+  .product_detail_card {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .product_detail .product_detail_card .descripton {
+    width: 100%;
+    margin: auto;
+    font-size: 20px;
+  }
+  .product_detail_card .buttons span {
+    width: 100%;
   }
 }
