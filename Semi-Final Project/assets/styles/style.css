@@ -90,6 +90,21 @@ li {
 .navbar_toggle:hover {
   color: var(--sec-color);
 }
+.navbar_form .search {
+  position: relative;
+}
+.navbar_form .search_bar {
+  position: absolute;
+  bottom: -42px;
+  right: 50px;
+  margin: auto;
+  width: 300px;
+}
+.navbar_form .search_bar input[type="text"] {
+  width: 100%;
+  padding: 0.5rem 0.2rem;
+  outline: none;
+}
 @media (max-width: 991px) {
   .navbar_links {
     display: none !important;

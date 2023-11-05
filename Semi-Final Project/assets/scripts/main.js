@@ -128,3 +128,19 @@ async function loadAllProducts() {
 }
 
 loadAllProducts();
+// ======================================================================
+
+const search = document.querySelector(".navbar_form .search");
+const login = document.querySelector(".navbar_form .login");
+const wishlist = document.querySelector(".navbar_form .wishlist");
+const cart = document.querySelector(".navbar_form .cart");
+const toggle = document.querySelector(".navbar_toggle");
+const searchBar = document.querySelector(".search_bar");
+
+search.addEventListener("click", function () {
+  searchBar.classList.toggle("hidden");
+});
+
+login.addEventListener("click", function () {
+  location.assign("register.html");
+});

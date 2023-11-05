@@ -15,7 +15,7 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <link rel="stylesheet" href="../assets/styles/style.css" />
+    <link rel="stylesheet" href="assets/styles/register.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
@@ -28,13 +28,28 @@
     />
   </head>
   <body>
-    <header class="navbar">
-      <div class="container d-flex justify-content-center align-items-center">
-        <div class="navbar_logo">
-          <h1><a href="index.html">SaleHub</a></h1>
-        </div>
+    <main class="register">
+      <div class="logo">
+        <h1>SaleHub</h1>
       </div>
-    </header>
-    
+      <form>
+        <h3>Login</h3>
+        <div class="form_group">
+          <label for="email">Email Address</label>
+          <input type="email" name="email" id="email" />
+          <span class="errorMessage"></span>
+        </div>
+        <div class="form_group">
+          <label for="password">Password</label>
+          <input type="password" name="password" id="password" />
+          <span class="errorMessage"></span>
+        </div>
+        <div class="btns">
+          <button class="btn btn-secondary" type="submit">Login</button>
+          <a href="register.html">Don't Have an account</a>
+        </div>
+      </form>
+    </main>
+    <script src="assets/scripts/login.js"></script>
   </body>
 </html>
