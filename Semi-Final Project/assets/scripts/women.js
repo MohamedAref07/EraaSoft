@@ -60,3 +60,6 @@ loadAllProducts();
 function saveDataToLocalStorage(type, data) {
   localStorage.setItem(`${type}`, `${JSON.stringify(data)}`);
 }
+
+
+

@@ -136,6 +136,8 @@ const wishlist = document.querySelector(".navbar_form .wishlist");
 const cart = document.querySelector(".navbar_form .cart");
 const toggle = document.querySelector(".navbar_toggle");
 const searchBar = document.querySelector(".search_bar");
+const toggleMenu = document.querySelector(".toggle_menu");
+const overLay = document.querySelector(".overlay");
 
 search.addEventListener("click", function () {
   searchBar.classList.toggle("hidden");
@@ -144,3 +146,13 @@ search.addEventListener("click", function () {
 login.addEventListener("click", function () {
   location.assign("register.html");
 });
+
+toggle.addEventListener("click", function () {
+  toggleMenu.classList.remove("hidden");
+  overLay.classList.remove("hidden");
+});
+overLay.addEventListener("click", function () {
+  toggleMenu.classList.add("hidden");
+  overLay.classList.add("hidden");
+});
+// ==================================================================

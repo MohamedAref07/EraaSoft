@@ -105,6 +105,66 @@ li {
   padding: 0.5rem 0.2rem;
   outline: none;
 }
+.cart,
+.wishlist {
+  position: relative;
+}
+.cart span,
+.wishlist span {
+  width: 1.2rem;
+  height: 1.2rem;
+  background: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  color: #ffff;
+  font-size: 0.7rem;
+  position: absolute;
+  top: -1rem;
+  right: -1rem;
+}
+.wishListPage {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+body .overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  left: 0;
+  top: 0;
+  z-index: 50;
+  transition: var(--transition);
+}
+.toggle_menu {
+  width: 40%;
+  position: fixed;
+  height: 100%;
+  z-index: 100;
+  right: 0;
+  transition: var(--transition);
+}
+.toggle_menu .menu {
+  background-color: var(--sec-color);
+  color: #ececec;
+  height: 100%;
+  padding: 1rem 0;
+}
+.toggle_menu .menu ul {
+  padding: 0 1rem;
+}
+.toggle_menu .menu li {
+  padding: 1rem 0;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--main-color);
+  transition: var(--transition);
+}
+.toggle_menu .menu li:hover {
+  transform: translateX(10px);
+}
 @media (max-width: 991px) {
   .navbar_links {
     display: none !important;

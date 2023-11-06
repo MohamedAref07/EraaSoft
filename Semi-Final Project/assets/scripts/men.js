@@ -1,4 +1,5 @@
 /** @format */
+
 let menProducts = [];
 async function manProducts(endPoint) {
   let res = await fetch(`http://localhost:3000/product?for=${endPoint}`);
