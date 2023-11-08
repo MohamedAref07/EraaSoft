@@ -1,83 +1,61 @@
 /** @format */
+const wishListCount = document.querySelector(".wishlist span");
 let wishList;
-const wishListCount = document.querySelector(".wishList span");
-
-function getDataFromLocalStrorage() {
-  if (localStorage.getItem("wishList")) {
-    wishList = JSON.parse(localStorage.getItem("wishList"));
-    console.log(wishList);
-    wishListCount.textContent = wishList.length;
-    displayWishList(wishList);
+function getDataFromLocalStorage() {
+  if (localStorage.getItem("wishlist")) {
+    wishList = JSON.parse(localStorage.getItem("wishlist"));
+    displayWishlist(wishList);
+    wishListCount.textContent = JSON.parse(
+      localStorage.getItem("wishlist")
+    ).length;
   }
 }
-getDataFromLocalStrorage();
+getDataFromLocalStorage();
 function saveDataToLocalStorage(type, data) {
   localStorage.setItem(`${type}`, `${data}`);
 }
 
-function displayWishList(data) {
+function displayWishlist(data) {
   let temp = "";
   data.forEach(
-    (data, index) =>
-      (temp += `<div class="product" id="${data.id}">
-                          <div class="product-img">
-                              <div class="product-icons">
-                                  <div class="icons">
-                                      <div class="icon active" onclick="removeWishList(this)">
-                                          <i class="fas fa-heart"></i>
-                                      </div>
-                                      <button class="icon" ${
-                                        data.stock == 0 ? "disabled" : ""
-                                      }>
-                                          <i class="fas fa-cart-shopping"></i>
-                                      </button>
-                                      <div class="icon" onclick="showSingleProduct(${
-                                        data.id
-                                      })">
-                                          <i class="fas fa-eye" ></i>
-                                      </div>
-                                  </div>
-                              </div>
-                              <img src="${data.productImage}"
-                                  alt="">
-                          </div>
-                          <div class="product-details">
-                          <span class="${
-                            data.stock <= 10 ? "danger" : ""
-                          }">left Stock only :${data.stock}</span>
-                              <h3>${data.productName}</h3>
-                              <p>${data.description
-                                .split(" ")
-                                .splice(0, 10)
-                                .join(" ")}</p>
-                              <div class="price">
-                                  <span class="danger">${
-                                    data.onSale ? data.newPrice : data.oldPrice
-                                  }$</span>
-                                  ${
-                                    data.onSale
-                                      ? `<del>${data.oldPrice}$</del>`
-                                      : ""
-                                  }
-                              </div>
-                          </div>
-                      </div>`)
+    (dataItem) =>
+      (temp += `<div class="product_card" id="${dataItem.id}">
+      <div class="product_image">
+      <img
+        src="${dataItem.image}"
+        alt=""
+      />
+      <div class="product_buttons">
+        <span class="active wishlist" onclick="removeFromWishList(this)"
+          ><i class="fa-regular fa-heart"></i
+        ></span>
+        <span class="addcart"
+          ><i class="fa-solid fa-cart-shopping"></i
+        ></span>
+      </div>
+      <button id=${dataItem.id} class="btn btn-dark view">Buy Product</button>
+    </div>
+    <div class="product_details">
+      <p>${dataItem.description}</p>
+      <span class="price">${dataItem.price}</span>
+    </div>
+  </div>
+  `)
   );
-  document.getElementById("showData").innerHTML = temp;
-
-  if (temp.length == 0) {
-    document.getElementById("showData").innerHTML = `<h1?>Cart is Empty</h1?`;
-  }
+  temp.length == 0
+    ? (document.querySelector(
+        ".wishListPage .container"
+      ).innerHTML = `<h1>Wishlist Is Empty</h1>`)
+    : (document.querySelector(".wishListPage .container").innerHTML = temp);
 }
-function removeWishList(e) {
-  let newData = JSON.parse(localStorage.getItem("wishList")) || [];
-  if (e.classList.contains("active")) {
-    let removeId = parseInt(e.closest(".product").getAttribute("id"));
-    console.log(removeId);
-    e.closest(".product").remove();
-    let data = newData.filter((data) => data.id !== removeId);
-    saveDataToLocalStorage("wishList", JSON.stringify([...data]));
-    wishListCount.textContent = newData.length;
-    newData.push(...data);
-  }
+function removeFromWishList(e) {
+  let newData = JSON.parse(localStorage.getItem("wishlist")) || [];
+  let removeId = e.closest(".product_card").getAttribute("id");
+  e.closest(".product_card").remove();
+  let data = newData.filter((data) => data.id != removeId);
+  saveDataToLocalStorage("wishlist", JSON.stringify([...data]));
+  newData.push(...data);
+  wishListCount.textContent = JSON.parse(
+    localStorage.getItem("wishlist")
+  ).length;
 }

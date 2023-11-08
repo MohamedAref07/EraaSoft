@@ -32,75 +32,42 @@ const swiper_product = new Swiper(".swiper_product", {
 });
 // ============================================================================
 let allProducts = [];
-async function womenProducts(endPoint) {
-  let res = await fetch(`http://localhost:3000/product?for=${endPoint}`);
+async function Products() {
+  let res = await fetch(`http://localhost:3000/product`);
   let finalRes = await res.json();
   allProducts.push(...finalRes);
-  displaywomenProducts(finalRes);
+  displayProducts(finalRes);
 }
-// womenProducts("women");
 
-function displaywomenProducts(data) {
-  let temp = ``;
-  data.forEach(
-    (data) =>
-      (temp += `
+function displayProducts(data) {
+  const forHimContainer = document.querySelector(".forhim .swiper-wrapper");
+  const forHerContainer = document.querySelector(".forher .swiper-wrapper");
+  data.forEach((data, index) => {
+    let temp = `
       <div class="swiper-slide">
-                <div class="product_container">
-                  <img
-                    src="${data.image}"
-                    alt=""
-                  />
-                  <div class="product_buttons">
-                    <span class="wishlist"
-                      ><i class="fa-regular fa-heart"></i
-                    ></span>
-                    <span class="addcart"
-                      ><i class="fa-solid fa-cart-shopping"></i
-                    ></span>
-                  </div>
-                  <button id='product_${data.id}' class="btn btn-dark view">View Product</button>
-                </div>
-              </div>
-  `)
-  );
-  document.querySelector(".forher .swiper-wrapper").innerHTML = temp;
-}
-// =================================================================================
+        <div class="product_container">
+          <img src="${data.image}" alt="" />
+          <div class="product_buttons">
+            <span class="wishlist" onclick="addProductToWishlist(${index})">
+              <i class="fa-regular fa-heart"></i>
+            </span>
+            <span class="addcart">
+              <i class="fa-solid fa-cart-shopping"></i>
+            </span>
+          </div>
+          <button id="product_${data.id}" class="btn btn-dark view">View Product</button>
+        </div>
+      </div>
+    `;
 
-async function manProducts(endPoint) {
-  let res = await fetch(`http://localhost:3000/product?for=${endPoint}`);
-  let finalRes = await res.json();
-  allProducts.push(...finalRes);
-  displaymanProducts(finalRes);
-}
-// manProducts("man");
-
-async function displaymanProducts(data) {
-  let temp = ``;
-  data.forEach(
-    (data) =>
-      (temp += `
-      <div class="swiper-slide">
-                <div class="product_container">
-                  <img
-                    src="${data.image}"
-                    alt=""
-                  />
-                  <div class="product_buttons">
-                    <span class="wishlist"
-                      ><i class="fa-regular fa-heart"></i
-                    ></span>
-                    <span class="addcart"
-                      ><i class="fa-solid fa-cart-shopping"></i
-                    ></span>
-                  </div>
-                  <button id=${data.id} class="btn btn-dark view">View Product</button>
-                </div>
-              </div>
-  `)
-  );
-  document.querySelector(".forhim .swiper-wrapper").innerHTML = temp;
+    if (data.for === "man") {
+      forHimContainer.innerHTML += temp;
+    } else {
+      forHerContainer.innerHTML += temp;
+    }
+  });
+  // ? (document.querySelector(".forhim .swipper-wrapper").innerHTML = temp)
+  // : "";
 }
 // ======================================================================================
 
@@ -118,12 +85,11 @@ function makeProductWorks() {
 }
 
 function saveDataToLocalStorage(type, data) {
-  localStorage.setItem(`${type}`, `${JSON.stringify(data)}`);
+  localStorage.setItem(`${type}`, `${data}`);
 }
 
 async function loadAllProducts() {
-  await womenProducts("women");
-  await manProducts("man");
+  await Products();
   makeProductWorks();
 }
 
@@ -138,6 +104,7 @@ const toggle = document.querySelector(".navbar_toggle");
 const searchBar = document.querySelector(".search_bar");
 const toggleMenu = document.querySelector(".toggle_menu");
 const overLay = document.querySelector(".overlay");
+const wishListCount = document.querySelector(".wishlist span");
 
 search.addEventListener("click", function () {
   searchBar.classList.toggle("hidden");
@@ -156,3 +123,17 @@ overLay.addEventListener("click", function () {
   overLay.classList.add("hidden");
 });
 // ==================================================================
+wishlist.addEventListener("click", () => {
+  location.assign("wishlist.html");
+});
+
+let wishlistContainer = [];
+async function addProductToWishlist(id) {
+  let res = await fetch(`http://localhost:3000/product`);
+  let finalRes = await res.json();
+  wishlistContainer.push(finalRes[id]);
+  // console.log();
+  saveDataToLocalStorage("wishlist", JSON.stringify(wishlistContainer));
+  wishListCount.textContent = JSON.parse(
+    localStorage.getItem("wishlist")).length;
+}
