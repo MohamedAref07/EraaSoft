@@ -2,18 +2,14 @@
 const wishListCount = document.querySelector(".wishlist span");
 let wishList;
 function getDataFromLocalStorage() {
-  if (localStorage.getItem("wishlist")) {
-    wishList = JSON.parse(localStorage.getItem("wishlist"));
+  wishList = getJsonObjectFromLocalStorage("wishlist");
+  if (wishList) {
     displayWishlist(wishList);
-    wishListCount.textContent = JSON.parse(
-      localStorage.getItem("wishlist")
-    ).length;
+    wishListCount.textContent = wishList.length;
   }
 }
+
 getDataFromLocalStorage();
-function saveDataToLocalStorage(type, data) {
-  localStorage.setItem(`${type}`, `${data}`);
-}
 
 function displayWishlist(data) {
   let temp = "";
@@ -53,7 +49,7 @@ function removeFromWishList(e) {
   let removeId = e.closest(".product_card").getAttribute("id");
   e.closest(".product_card").remove();
   let data = newData.filter((data) => data.id != removeId);
-  saveDataToLocalStorage("wishlist", JSON.stringify([...data]));
+  saveDataToLocalStorage("wishlist", [...data]);
   newData.push(...data);
   wishListCount.textContent = JSON.parse(
     localStorage.getItem("wishlist")

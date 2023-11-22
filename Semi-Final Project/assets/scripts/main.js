@@ -42,16 +42,16 @@ async function Products() {
 function displayProducts(data) {
   const forHimContainer = document.querySelector(".forhim .swiper-wrapper");
   const forHerContainer = document.querySelector(".forher .swiper-wrapper");
-  data.forEach((data, index) => {
+  data.forEach((data) => {
     let temp = `
       <div class="swiper-slide">
         <div class="product_container">
           <img src="${data.image}" alt="" />
           <div class="product_buttons">
-            <span class="wishlist" onclick="addProductToWishlist(${index})">
+            <span class="wishlist" onclick="addProductToWishlist(${data.id})">
               <i class="fa-regular fa-heart"></i>
             </span>
-            <span class="addcart">
+            <span class="addcart" onclick="addProductToCart(${data.id})">
               <i class="fa-solid fa-cart-shopping"></i>
             </span>
           </div>
@@ -76,7 +76,6 @@ function makeProductWorks() {
   viewBtns.forEach((btn) => {
     btn.addEventListener("click", () => {
       let productId = btn.getAttribute("id").replace("product_", "");
-      console.log(productId);
       let productDetails = allProducts.find((p) => p.id == productId);
       saveDataToLocalStorage("productDetails", productDetails);
       location.assign("product.html");
@@ -84,9 +83,6 @@ function makeProductWorks() {
   });
 }
 
-function saveDataToLocalStorage(type, data) {
-  localStorage.setItem(`${type}`, `${data}`);
-}
 
 async function loadAllProducts() {
   await Products();
@@ -126,14 +122,17 @@ overLay.addEventListener("click", function () {
 wishlist.addEventListener("click", () => {
   location.assign("wishlist.html");
 });
+cart.addEventListener("click", () => {
+  location.assign("cart.html");
+});
 
 let wishlistContainer = [];
 async function addProductToWishlist(id) {
   let res = await fetch(`http://localhost:3000/product`);
   let finalRes = await res.json();
   wishlistContainer.push(finalRes[id]);
-  // console.log();
-  saveDataToLocalStorage("wishlist", JSON.stringify(wishlistContainer));
+  saveDataToLocalStorage("wishlist", wishlistContainer);
   wishListCount.textContent = JSON.parse(
-    localStorage.getItem("wishlist")).length;
+    localStorage.getItem("wishlist")
+  ).length;
 }

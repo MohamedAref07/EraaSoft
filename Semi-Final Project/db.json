@@ -4,7 +4,7 @@
       "id": 1,
       "image": "assets/images/Layer-142_1024x1024@2x.jpg",
       "category": "jacket",
-      "price": "100$",
+      "price": "$100",
       "for": "women",
       "description": "zebra jacket",
       "showhome": true
@@ -13,7 +13,7 @@
       "id": 2,
       "image": "assets/images/Layer-134_1024x1024@2x.jpg",
       "category": "jacket",
-      "price": "100$",
+      "price": "$100",
       "for": "women",
       "description": "jacket",
       "showhome": true
@@ -22,7 +22,7 @@
       "id": 3,
       "image": "assets/images/Layer-134_1024x1024@2x.jpg",
       "category": "jacket",
-      "price": "100$",
+      "price": "$100",
       "for": "women",
       "description": "jacket",
       "showhome": true
@@ -31,7 +31,7 @@
       "id": 4,
       "image": "assets/images/minimalist-img-8_533x.jpg",
       "category": "skirt",
-      "price": "100$",
+      "price": "$100",
       "for": "women",
       "description": "skirt",
       "showhome": true
@@ -40,7 +40,7 @@
       "id": 5,
       "image": "assets/images/brand-product-1_533x.jpg",
       "category": "bag",
-      "price": "100$",
+      "price": "$100",
       "for": "women",
       "description": "bag",
       "showhome": true
@@ -49,7 +49,7 @@
       "id": 6,
       "image": "assets/images/5814619742_2_4_1-367x497_533x.jpg",
       "category": "jacket",
-      "price": "100$",
+      "price": "$100",
       "for": "women",
       "description": "jacket",
       "showhome": true
@@ -58,7 +58,7 @@
       "id": 7,
       "image": "assets/images/6348644800_1-1_1024x1024_2x_d37af07a-b4b7-482b-9f25-121a696ce1c9_750x.jpg",
       "category": "jacket",
-      "price": "100$",
+      "price": "$100",
       "for": "man",
       "description": "jacket",
       "showhome": true
@@ -67,7 +67,7 @@
       "id": 8,
       "image": "assets/images/Layer-133-1_1024x1024_2x_a77603f6-f4c2-44c0-8010-3c00ce7fa2b4_1024x1024@2x.jpg",
       "category": "jacket",
-      "price": "100$",
+      "price": "$100",
       "for": "man",
       "description": "jacket",
       "showhome": true
@@ -76,7 +76,7 @@
       "id": 9,
       "image": "assets/images/t-shirtnm3_533x.jpg",
       "category": "shirt",
-      "price": "100$",
+      "price": "$100",
       "for": "man",
       "description": "shirt",
       "showhome": true
@@ -85,7 +85,7 @@
       "id": 10,
       "image": "assets/images/shoes-4_2cbb0186-0fb7-4ce6-9c05-a33d5c2ba58f_533x.jpg",
       "category": "shoes",
-      "price": "100$",
+      "price": "$100",
       "for": "man",
       "description": "shoes",
       "showhome": true
@@ -94,7 +94,7 @@
       "id": 11,
       "image": "assets/images/shoes-1_533x.jpg",
       "category": "shoes",
-      "price": "100$",
+      "price": "$100",
       "for": "man",
       "description": "shoes",
       "showhome": true
@@ -103,7 +103,7 @@
       "id": 12,
       "image": "assets/images/81r6jFYrC0500_533x.jpg",
       "category": "shirt",
-      "price": "100$",
+      "price": "$100",
       "for": "man",
       "description": "shirt",
       "showhome": true
@@ -112,7 +112,7 @@
       "id": 13,
       "image": "assets/images/bag-brand-1_1024x1024@2x.jpg",
       "category": "bag",
-      "price": "100$",
+      "price": "$100",
       "for": "women",
       "description": "bag"
     },
@@ -120,7 +120,7 @@
       "id": 14,
       "image": "assets/images/bag-brand-4_1024x1024@2x.jpg",
       "category": "bag",
-      "price": "100$",
+      "price": "$100",
       "for": "women",
       "description": "bag"
     },
@@ -128,7 +128,7 @@
       "id": 15,
       "image": "assets/images/shoes-6_533x.jpg",
       "category": "shoes",
-      "price": "100$",
+      "price": "$100",
       "for": "women",
       "description": "shoes"
     },
@@ -136,7 +136,7 @@
       "id": 16,
       "image": "assets/images/shirts1-xcx1_533x.jpg",
       "category": "shirt",
-      "price": "100$",
+      "price": "$100",
       "for": "man",
       "description": "shirt"
     },
@@ -144,7 +144,7 @@
       "id": 17,
       "image": "assets/images/t-shirt5e5_533x.jpg",
       "category": "shirt",
-      "price": "100$",
+      "price": "$100",
       "for": "man",
       "description": "shirt"
     }

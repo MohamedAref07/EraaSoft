@@ -3,7 +3,6 @@ let allProductsDisplay = [];
 async function showAllProducts() {
   let res = await fetch(`http://localhost:3000/product`);
   let finalRes = await res.json();
-  console.log(finalRes);
   displayProducts(finalRes);
   allProductsDisplay.push(...finalRes);
 }
@@ -44,7 +43,6 @@ function makeProductWorks() {
   viewBtns.forEach((btn) => {
     btn.addEventListener("click", () => {
       let productId = btn.getAttribute("id").replace("product_", "");
-      console.log(productId);
       let productDetails = allProductsDisplay.find((p) => p.id == productId);
       saveDataToLocalStorage("productDetails", productDetails);
       location.assign("product.html");
@@ -57,9 +55,6 @@ async function loadAllProducts() {
 }
 
 loadAllProducts();
-function saveDataToLocalStorage(type, data) {
-  localStorage.setItem(`${type}`, `${JSON.stringify(data)}`);
-}
 const search = document.querySelector(".navbar_form .search");
 const login = document.querySelector(".navbar_form .login");
 const wishlist = document.querySelector(".navbar_form .wishlist");
@@ -96,8 +91,7 @@ async function addProductToWishlist(id) {
   let res = await fetch(`http://localhost:3000/product`);
   let finalRes = await res.json();
   wishlistContainer.push(finalRes[id]);
-  // console.log();
-  saveDataToLocalStorage("wishlist", JSON.stringify(wishlistContainer));
+  saveDataToLocalStorage("wishlist", wishlistContainer);
   wishListCount.textContent = JSON.parse(
     localStorage.getItem("wishlist")
   ).length;

@@ -872,6 +872,14 @@ input::-webkit-inner-spin-button {
   height: 100%;
   padding: 50px 0;
 }
+.cartPage {
+  height: 100%;
+  padding: 50px 0;
+}
+.products_cart {
+  border: 1px solid var(--main-color);
+  margin-bottom: 1rem;
+}
 .wishListPage .container {
   display: flex;
   justify-content: center;

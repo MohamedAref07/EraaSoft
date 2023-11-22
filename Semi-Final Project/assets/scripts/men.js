@@ -58,9 +58,6 @@ async function loadAllProducts() {
 }
 
 loadAllProducts();
-function saveDataToLocalStorage(type, data) {
-  localStorage.setItem(`${type}`, `${JSON.stringify(data)}`);
-}
 
 const search = document.querySelector(".navbar_form .search");
 const login = document.querySelector(".navbar_form .login");
@@ -99,7 +96,7 @@ async function addProductToWishlist(id) {
   let finalRes = await res.json();
   wishlistContainer.push(finalRes[id]);
   // console.log();
-  saveDataToLocalStorage("wishlist", JSON.stringify(wishlistContainer));
+  saveDataToLocalStorage("wishlist", wishlistContainer);
   wishListCount.textContent = JSON.parse(
     localStorage.getItem("wishlist")
   ).length;
